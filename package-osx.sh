@@ -4,10 +4,10 @@ Arch="$1"
 OutputPath="$2"
 Version="$3"
 
-FileName="KNcloud-${Arch}.zip"
-wget -nv -O $FileName "https://github.com/2dust/v2rayN-core-bin/raw/refs/heads/master/v2rayN-${Arch}.zip"
+FileName="v2rayN-${Arch}.zip"
+wget -nv -O $FileName "https://github.com/2dust/v2rayN-core-bin/raw/refs/heads/master/$FileName"
 7z x $FileName
-cp -rf KNcloud-${Arch}/* $OutputPath
+cp -rf v2rayN-${Arch}/* $OutputPath
 
 PackagePath="KNcloud-Package-${Arch}"
 mkdir -p "$PackagePath/KNcloud.app/Contents/Resources"
