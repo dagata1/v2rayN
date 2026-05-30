@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<ApplicationIcon>Assets\KNcloud_White.ico</ApplicationIcon>
+		<Win32Icon>Assets\KNcloud_White.ico</Win32Icon>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 		<AssemblyName>KNcloud</AssemblyName>

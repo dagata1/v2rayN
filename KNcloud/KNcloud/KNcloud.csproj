@@ -6,6 +6,7 @@
 		<GenerateSatelliteAssembliesForCore>true</GenerateSatelliteAssembliesForCore>
 		<UseWPF>true</UseWPF>
 		<ApplicationIcon>Resources\KNcloud_White.ico</ApplicationIcon>
+		<Win32Icon>Resources\KNcloud_White.ico</Win32Icon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
 		<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
