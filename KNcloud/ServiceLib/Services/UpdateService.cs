@@ -152,11 +152,17 @@ public class UpdateService(Config config, Func<bool, string, Task> updateFunc)
         try
         {
             var result = await GetRemoteVersion(downloadHandle, type, preRelease);
-            if (!result.Success || result.Version is null)
+            if (result.Success && result.Version is not null)
             {
-                return result;
+                return await ParseDownloadUrl(type, result);
             }
-            return await ParseDownloadUrl(type, result);
+
+            if (type == ECoreType.KNcloud)
+            {
+                return new UpdateResult(false, string.Format(ResUI.IsLatestN, type, Utils.GetVersionInfo()));
+            }
+
+            return result;
         }
         catch (Exception ex)
         {

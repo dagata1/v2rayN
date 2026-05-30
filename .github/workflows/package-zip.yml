@@ -46,8 +46,11 @@ jobs:
         path: KNcloud-${{ env.Target }}-${{ env.Arch }}
     
     - name: Get v2rayN-core-bin
-      run: wget -nv -O KNcloud-$Target-$Arch.zip "https://github.com/2dust/v2rayN-core-bin/raw/refs/heads/master/v2rayN-$Target-$Arch.zip"
-    
+      run: |
+        wget -nv -O v2rayN-$Target-$Arch.zip "https://github.com/2dust/v2rayN-core-bin/raw/refs/heads/master/v2rayN-$Target-$Arch.zip"
+        7z x v2rayN-$Target-$Arch.zip
+        cp -rf v2rayN-$Target-$Arch/* KNcloud-$Target-$Arch/
+
     - name: Package zip archive
       run: 7z a -tZip KNcloud-$Target-$Arch.zip KNcloud-$Target-$Arch -mx1
 

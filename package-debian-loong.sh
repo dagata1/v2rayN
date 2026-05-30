@@ -440,7 +440,7 @@ populate_assets_zip_mode() {
   rm -f "$outroot/v2rayn.zip" 2>/dev/null || true
   find "$outroot" -type d -name "mihomo" -prune -exec rm -rf {} + 2>/dev/null || true
 
-  nested_dir="$(find "$outroot" -maxdepth 1 -type d -name 'KNcloud-linux-*' | head -n1 || true)"
+  nested_dir="$(find "$outroot" -maxdepth 1 -type d -name 'v2rayN-linux-*' | head -n1 || true)"
   if [[ -n "$nested_dir" && -d "$nested_dir/bin" ]]; then
     mkdir -p "$outroot/bin"
     rsync -a "$nested_dir/bin/" "$outroot/bin/"
