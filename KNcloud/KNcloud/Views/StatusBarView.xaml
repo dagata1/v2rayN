@@ -105,7 +105,7 @@
 
         <tb:TaskbarIcon
             x:Name="tbNotify"
-            IconSource="/Resources/KNcloud_White.ico"
+            IconSource="/Resources/KNcloud_Black.ico"
             NoLeftClickDelay="True"
             ToolTipText="KNcloud">
             <tb:TaskbarIcon.ContextMenu>

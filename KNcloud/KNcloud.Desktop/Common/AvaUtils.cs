@@ -53,8 +53,7 @@ internal class AvaUtils
 
     public static WindowIcon GetMainWindowIcon()
     {
-        var iconName = Application.Current?.ActualThemeVariant == ThemeVariant.Light ? "KNcloud_Black.ico" : "KNcloud_White.ico";
-        return GetAssetIcon(iconName);
+        return GetAssetIcon("KNcloud_Black.ico");
     }
 
     private static WindowIcon GetAssetIcon(string iconName)
