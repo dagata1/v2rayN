@@ -29,6 +29,8 @@ public partial class MainWindow : WindowBase<MainWindowViewModel>
         menuClose.Click += MenuClose_Click;
 
         ViewModel = new MainWindowViewModel(UpdateViewHandler);
+        UpdateMainWindowIcon();
+        Application.Current!.ActualThemeVariantChanged += (_, _) => UpdateMainWindowIcon();
 
         switch (_config.UiItem.MainGirdOrientation)
         {
@@ -175,6 +177,11 @@ public partial class MainWindow : WindowBase<MainWindowViewModel>
     }
 
     #region Event
+
+    private void UpdateMainWindowIcon()
+    {
+        Icon = AvaUtils.GetMainWindowIcon();
+    }
 
     private void OnProgramStarted(object state, bool timeout)
     {

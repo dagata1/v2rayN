@@ -48,7 +48,18 @@ internal class AvaUtils
             return new(fileName);
         }
 
-        var uri = new Uri(Path.Combine(Global.AvaAssets, $"NotifyIcon{index}.ico"));
+        return GetAssetIcon($"NotifyIcon{index}.ico");
+    }
+
+    public static WindowIcon GetMainWindowIcon()
+    {
+        var iconName = Application.Current?.ActualThemeVariant == ThemeVariant.Light ? "KNcloud_Black.ico" : "KNcloud_White.ico";
+        return GetAssetIcon(iconName);
+    }
+
+    private static WindowIcon GetAssetIcon(string iconName)
+    {
+        var uri = new Uri(Path.Combine(Global.AvaAssets, iconName));
         using var bitmap = new Bitmap(AssetLoader.Open(uri));
         return new(bitmap);
     }

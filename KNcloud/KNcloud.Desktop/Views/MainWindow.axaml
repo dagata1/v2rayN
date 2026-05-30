@@ -13,7 +13,7 @@
     Height="800"
     MinWidth="600"
     x:DataType="vms:MainWindowViewModel"
-    Icon="/Assets/KNcloud.ico"
+    Icon="/Assets/KNcloud_White.ico"
     ShowInTaskbar="True"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
