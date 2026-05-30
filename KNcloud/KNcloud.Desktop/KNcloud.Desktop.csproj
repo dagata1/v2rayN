@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<ApplicationIcon>Assets\KNcloud_Black.ico</ApplicationIcon>
-		<Win32Icon>Assets\KNcloud_Black.ico</Win32Icon>
+		<ApplicationIcon>Assets\KNcloud.ico</ApplicationIcon>
+		<Win32Icon>Assets\KNcloud.ico</Win32Icon>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 		<AssemblyName>KNcloud</AssemblyName>
@@ -41,7 +41,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="Assets\KNcloud_Black.ico">
+		<EmbeddedResource Include="Assets\KNcloud.ico">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<Compile Update="Views\FullConfigTemplateWindow.axaml.cs">

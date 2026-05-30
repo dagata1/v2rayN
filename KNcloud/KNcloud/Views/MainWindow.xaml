@@ -15,7 +15,7 @@
     Height="800"
     MinWidth="800"
     x:TypeArguments="vms:MainWindowViewModel"
-    Icon="/Resources/KNcloud_Black.ico"
+    Icon="/Resources/KNcloud.ico"
     ResizeMode="CanResizeWithGrip"
     ShowInTaskbar="True"
     Style="{StaticResource WindowGlobal}"

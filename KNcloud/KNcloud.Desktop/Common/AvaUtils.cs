@@ -53,7 +53,7 @@ internal class AvaUtils
 
     public static WindowIcon GetMainWindowIcon()
     {
-        return GetAssetIcon("KNcloud_Black.ico");
+        return GetAssetIcon("KNcloud.ico");
     }
 
     private static WindowIcon GetAssetIcon(string iconName)
