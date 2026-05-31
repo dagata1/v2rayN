@@ -45,6 +45,18 @@
                         ClipToBounds="True"
                         KeyboardNavigation.TabNavigation="Continue"
                         Style="{StaticResource MaterialDesignToolBar}">
+                        <Button
+                            x:Name="btnKncloudLogin"
+                            Padding="{StaticResource MarginLeftRight8}">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Margin="{StaticResource MarginRight8}"
+                                    VerticalAlignment="Center"
+                                    Kind="Login" />
+                                <TextBlock Style="{StaticResource ToolbarTextBlock}" Text="登录导入" />
+                            </StackPanel>
+                        </Button>
+                        <Separator />
                         <Menu Margin="0,1" Style="{StaticResource ToolbarMenu}">
                             <MenuItem Padding="{StaticResource MarginLeftRight8}" AutomationProperties.Name="{x:Static resx:ResUI.menuServers}">
                                 <MenuItem.Header>
@@ -165,18 +177,6 @@
                                     Header="{x:Static resx:ResUI.menuSubGroupUpdateViaProxy}" />
                             </MenuItem>
                         </Menu>
-                        <Separator />
-                        <Button
-                            x:Name="btnKncloudLogin"
-                            Padding="{StaticResource MarginLeftRight8}">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon
-                                    Margin="{StaticResource MarginRight8}"
-                                    VerticalAlignment="Center"
-                                    Kind="Login" />
-                                <TextBlock Style="{StaticResource ToolbarTextBlock}" Text="登录" />
-                            </StackPanel>
-                        </Button>
                         <Separator />
                         <Menu Margin="0,1" Style="{StaticResource ToolbarMenu}">
                             <MenuItem Padding="{StaticResource MarginLeftRight8}" AutomationProperties.Name="{x:Static resx:ResUI.menuSetting}">

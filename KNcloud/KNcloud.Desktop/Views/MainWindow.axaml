@@ -25,6 +25,8 @@
             <DockPanel Margin="{StaticResource Margin8}" DockPanel.Dock="Top">
                 <ContentControl x:Name="conTheme" DockPanel.Dock="Right" />
                 <Menu Margin="{StaticResource Margin4}">
+                    <MenuItem x:Name="menuKncloudLogin" Header="登录导入" />
+
                     <MenuItem Header="{x:Static resx:ResUI.menuServers}">
                         <MenuItem
                             x:Name="menuAddServerViaClipboard"
@@ -97,8 +99,6 @@
                     </MenuItem>
 
                     <MenuItem x:Name="menuReload" Header="{x:Static resx:ResUI.menuReload}" />
-
-                    <MenuItem x:Name="menuKncloudLogin" Header="登录" />
 
                     <MenuItem x:Name="menuClose" Header="{x:Static resx:ResUI.menuExit}" />
                 </Menu>

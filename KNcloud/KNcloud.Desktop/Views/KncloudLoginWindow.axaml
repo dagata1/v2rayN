@@ -6,74 +6,87 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:resx="clr-namespace:ServiceLib.Resx;assembly=ServiceLib"
     xmlns:vms="clr-namespace:ServiceLib.ViewModels;assembly=ServiceLib"
-    Title="KNcloud 登录"
-    Width="420"
-    Height="260"
+    Title="KNcloud 登录导入"
+    Width="480"
+    Height="360"
     ShowInTaskbar="False"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <DockPanel Margin="{StaticResource Margin16}">
-        <StackPanel
-            Margin="{StaticResource Margin4}"
-            HorizontalAlignment="Center"
-            DockPanel.Dock="Bottom"
-            Orientation="Horizontal">
-            <Button
-                x:Name="btnLogin"
-                Width="100"
-                Content="登录"
-                IsDefault="True" />
-            <Button
-                x:Name="btnCancel"
-                Width="100"
-                Margin="{StaticResource MarginLr8}"
-                Content="{x:Static resx:ResUI.TbCancel}"
-                IsCancel="True" />
-        </StackPanel>
+    <Border
+        Margin="20"
+        Padding="24"
+        Background="#1F1F23"
+        BorderBrush="#333742"
+        BorderThickness="1"
+        CornerRadius="8">
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Spacing="6">
+                <TextBlock
+                    FontSize="22"
+                    FontWeight="SemiBold"
+                    Text="KNcloud 登录导入" />
+                <TextBlock
+                    Opacity="0.72"
+                    Text="登录后将自动获取订阅链接并导入当前客户端。"
+                    TextWrapping="Wrap" />
+            </StackPanel>
 
-        <Grid ColumnDefinitions="80,*" RowDefinitions="Auto,Auto,Auto,Auto">
-            <TextBlock
-                Grid.Row="0"
-                Grid.Column="0"
-                Margin="{StaticResource Margin4}"
-                Text="KNcloud" />
+            <StackPanel DockPanel.Dock="Bottom" Spacing="12">
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                    <Button
+                        x:Name="btnLogin"
+                        Grid.Column="0"
+                        HorizontalAlignment="Stretch"
+                        Content="登录并导入"
+                        IsDefault="True" />
+                    <Button
+                        x:Name="btnCancel"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        Content="{x:Static resx:ResUI.TbCancel}"
+                        IsCancel="True" />
+                </Grid>
+                <Button
+                    x:Name="btnForgetPassword"
+                    HorizontalAlignment="Center"
+                    Background="Transparent"
+                    Content="忘记密码？" />
+            </StackPanel>
 
-            <TextBlock
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="{StaticResource Margin4}"
-                VerticalAlignment="Center"
-                Text="邮箱" />
-            <TextBox
-                x:Name="txtEmail"
-                Grid.Row="1"
-                Grid.Column="1"
-                Margin="{StaticResource Margin4}"
-                VerticalAlignment="Center"
-                Watermark="请输入邮箱" />
+            <Grid
+                Margin="0,24,0,20"
+                ColumnDefinitions="70,*"
+                RowDefinitions="Auto,Auto"
+                RowSpacing="14">
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    FontWeight="SemiBold"
+                    Text="邮箱" />
+                <TextBox
+                    x:Name="txtEmail"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    MinHeight="38"
+                    VerticalAlignment="Center"
+                    Watermark="请输入邮箱" />
 
-            <TextBlock
-                Grid.Row="2"
-                Grid.Column="0"
-                Margin="{StaticResource Margin4}"
-                VerticalAlignment="Center"
-                Text="密码" />
-            <TextBox
-                x:Name="txtPassword"
-                Grid.Row="2"
-                Grid.Column="1"
-                Margin="{StaticResource Margin4}"
-                VerticalAlignment="Center"
-                PasswordChar="●"
-                Watermark="请输入密码" />
-
-            <Button
-                x:Name="btnForgetPassword"
-                Grid.Row="3"
-                Grid.Column="1"
-                Margin="{StaticResource Margin4}"
-                HorizontalAlignment="Right"
-                Content="忘记密码" />
-        </Grid>
-    </DockPanel>
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    FontWeight="SemiBold"
+                    Text="密码" />
+                <TextBox
+                    x:Name="txtPassword"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    MinHeight="38"
+                    VerticalAlignment="Center"
+                    PasswordChar="●"
+                    Watermark="请输入密码" />
+            </Grid>
+        </DockPanel>
+    </Border>
 </Window>
