@@ -47,8 +47,8 @@ public partial class KncloudLoginWindow
         }
     }
 
-    private void BtnForgetPassword_Click(object sender, RoutedEventArgs e)
+    private async void BtnForgetPassword_Click(object sender, RoutedEventArgs e)
     {
-        ProcUtils.ProcessStart(ServiceLib.Services.KncloudAuthService.ForgetPasswordUrl);
+        ProcUtils.ProcessStart(await ServiceLib.Services.KncloudAuthService.GetForgetPasswordUrlAsync());
     }
 }

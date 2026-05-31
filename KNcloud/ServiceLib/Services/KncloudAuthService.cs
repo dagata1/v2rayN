@@ -5,9 +5,19 @@ namespace ServiceLib.Services;
 
 public class KncloudAuthService
 {
-    private const string LoginUrl = "https://www.kncloud.top/api/v1/passport/auth/login";
-    public const string ForgetPasswordUrl = "https://www.kncloud.top/api/v1/passport/auth/forget";
-    private const string SubscribeUrlFormat = "https://www.kncloud.top/api/v1/client/subscribe?token={0}";
+    private const string CloudDomainUrl = "https://aws.kncloud.top/api/domain/cloud";
+    private const string DefaultDomain = "https://www.kncloud.top";
+    private const string LoginPath = "/api/v1/passport/auth/login";
+    private const string ForgetPasswordPath = "/api/v1/passport/auth/forget";
+    private const string SubscribePathFormat = "/api/v1/client/subscribe?token={0}";
+
+    private static string? _domain;
+
+    public static async Task<string> GetForgetPasswordUrlAsync()
+    {
+        var domain = await GetDomainAsync();
+        return BuildUrl(domain, ForgetPasswordPath);
+    }
 
     public async Task<RetResult> LoginAsync(string email, string password)
     {
@@ -19,7 +29,8 @@ public class KncloudAuthService
         try
         {
             using var client = new HttpClient();
-            using var request = new HttpRequestMessage(HttpMethod.Post, LoginUrl);
+            var domain = await GetDomainAsync(client);
+            using var request = new HttpRequestMessage(HttpMethod.Post, BuildUrl(domain, LoginPath));
             var json = JsonUtils.Serialize(new
             {
                 email,
@@ -50,7 +61,7 @@ public class KncloudAuthService
                 Token = token,
                 IsAdmin = root?["data"]?["is_admin"]?.GetValue<int>() ?? 0,
                 AuthData = root?["data"]?["auth_data"]?.GetValue<string>() ?? string.Empty,
-                SubscriptionUrl = string.Format(SubscribeUrlFormat, token)
+                SubscriptionUrl = BuildUrl(domain, string.Format(SubscribePathFormat, token))
             };
             return new RetResult(true, "登录成功", result);
         }
@@ -59,5 +70,50 @@ public class KncloudAuthService
             Logging.SaveLog("KNcloud login", ex);
             return new RetResult(false, $"登录失败：{ex.Message}");
         }
+    }
+
+    private static async Task<string> GetDomainAsync(HttpClient? client = null)
+    {
+        if (_domain.IsNotEmpty())
+        {
+            return _domain!;
+        }
+
+        var disposeClient = client is null;
+        client ??= new HttpClient();
+        try
+        {
+            using var response = await client.GetAsync(CloudDomainUrl);
+            var responseText = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                var root = JsonUtils.ParseJson(responseText);
+                var domain = root?["data"]?["domain"]?.GetValue<string>()?.Trim().TrimEnd('/');
+                if (domain.IsNotEmpty())
+                {
+                    _domain = domain;
+                    return _domain;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Logging.SaveLog("KNcloud domain", ex);
+        }
+        finally
+        {
+            if (disposeClient)
+            {
+                client.Dispose();
+            }
+        }
+
+        _domain = DefaultDomain;
+        return _domain;
+    }
+
+    private static string BuildUrl(string domain, string path)
+    {
+        return $"{domain.TrimEnd('/')}/{path.TrimStart('/')}";
     }
 }
