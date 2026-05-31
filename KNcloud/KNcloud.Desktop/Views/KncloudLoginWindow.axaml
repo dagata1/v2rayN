@@ -8,7 +8,7 @@
     xmlns:vms="clr-namespace:ServiceLib.ViewModels;assembly=ServiceLib"
     Title="KNcloud 登录导入"
     Width="480"
-    Height="360"
+    Height="320"
     ShowInTaskbar="False"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -19,8 +19,8 @@
         BorderBrush="#333742"
         BorderThickness="1"
         CornerRadius="8">
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Top" Spacing="6">
+        <Grid RowDefinitions="Auto,Auto,Auto">
+            <StackPanel Grid.Row="0" Spacing="6">
                 <TextBlock
                     FontSize="22"
                     FontWeight="SemiBold"
@@ -31,36 +31,15 @@
                     TextWrapping="Wrap" />
             </StackPanel>
 
-            <StackPanel DockPanel.Dock="Bottom" Spacing="12">
-                <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-                    <Button
-                        x:Name="btnLogin"
-                        Grid.Column="0"
-                        HorizontalAlignment="Stretch"
-                        Content="登录并导入"
-                        IsDefault="True" />
-                    <Button
-                        x:Name="btnCancel"
-                        Grid.Column="1"
-                        HorizontalAlignment="Stretch"
-                        Content="{x:Static resx:ResUI.TbCancel}"
-                        IsCancel="True" />
-                </Grid>
-                <Button
-                    x:Name="btnForgetPassword"
-                    HorizontalAlignment="Center"
-                    Background="Transparent"
-                    Content="忘记密码？" />
-            </StackPanel>
-
             <Grid
-                Margin="0,24,0,20"
+                Grid.Row="1"
+                Margin="0,24,0,18"
                 ColumnDefinitions="70,*"
-                RowDefinitions="Auto,Auto"
-                RowSpacing="14">
+                RowDefinitions="Auto,14,Auto">
                 <TextBlock
                     Grid.Row="0"
                     Grid.Column="0"
+                    Margin="0,0,12,0"
                     VerticalAlignment="Center"
                     FontWeight="SemiBold"
                     Text="邮箱" />
@@ -68,25 +47,54 @@
                     x:Name="txtEmail"
                     Grid.Row="0"
                     Grid.Column="1"
-                    MinHeight="38"
-                    VerticalAlignment="Center"
+                    Height="40"
+                    VerticalContentAlignment="Center"
                     Watermark="请输入邮箱" />
 
                 <TextBlock
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Grid.Column="0"
+                    Margin="0,0,12,0"
                     VerticalAlignment="Center"
                     FontWeight="SemiBold"
                     Text="密码" />
                 <TextBox
                     x:Name="txtPassword"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Grid.Column="1"
-                    MinHeight="38"
-                    VerticalAlignment="Center"
+                    Height="40"
+                    VerticalContentAlignment="Center"
                     PasswordChar="●"
                     Watermark="请输入密码" />
             </Grid>
-        </DockPanel>
+
+            <Grid Grid.Row="2" RowDefinitions="Auto,Auto" ColumnDefinitions="*,12,*">
+                <Button
+                    x:Name="btnLogin"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    MinHeight="38"
+                    HorizontalAlignment="Stretch"
+                    Content="登录并导入"
+                    IsDefault="True" />
+                <Button
+                    x:Name="btnCancel"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    MinHeight="38"
+                    HorizontalAlignment="Stretch"
+                    Content="{x:Static resx:ResUI.TbCancel}"
+                    IsCancel="True" />
+                <Button
+                    x:Name="btnForgetPassword"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Margin="0,8,0,0"
+                    HorizontalAlignment="Center"
+                    Background="Transparent"
+                    Content="忘记密码？" />
+            </Grid>
+        </Grid>
     </Border>
 </Window>
