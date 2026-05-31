@@ -10,7 +10,7 @@
     xmlns:vms="clr-namespace:ServiceLib.ViewModels;assembly=ServiceLib"
     Title="KNcloud 登录导入"
     Width="480"
-    Height="380"
+    Height="320"
     x:TypeArguments="vms:KncloudLoginViewModel"
     ResizeMode="NoResize"
     ShowInTaskbar="False"
@@ -24,8 +24,14 @@
         BorderBrush="{DynamicResource MaterialDesignDivider}"
         BorderThickness="1"
         CornerRadius="8">
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Top">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
                 <TextBlock
                     FontSize="22"
                     FontWeight="SemiBold"
@@ -37,36 +43,7 @@
                     TextWrapping="Wrap" />
             </StackPanel>
 
-            <StackPanel DockPanel.Dock="Bottom">
-                <Grid Margin="0,4,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="12" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button
-                        x:Name="btnLogin"
-                        Grid.Column="0"
-                        MinHeight="38"
-                        Content="登录并导入"
-                        IsDefault="True"
-                        Style="{StaticResource DefButton}" />
-                    <Button
-                        Grid.Column="2"
-                        MinHeight="38"
-                        Content="{x:Static resx:ResUI.TbCancel}"
-                        IsCancel="true"
-                        Style="{StaticResource DefButton}" />
-                </Grid>
-                <Button
-                    x:Name="btnForgetPassword"
-                    Margin="0,12,0,0"
-                    HorizontalAlignment="Center"
-                    Content="忘记密码？"
-                    Style="{StaticResource MaterialDesignFlatButton}" />
-            </StackPanel>
-
-            <Grid Margin="0,24,0,20">
+            <Grid Grid.Row="1" Margin="0,24,0,18">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="14" />
@@ -80,35 +57,71 @@
                 <TextBlock
                     Grid.Row="0"
                     Grid.Column="0"
+                    Margin="0,0,12,0"
                     VerticalAlignment="Center"
                     FontWeight="SemiBold"
-                    Style="{StaticResource ToolbarTextBlock}"
                     Text="邮箱" />
                 <TextBox
                     x:Name="txtEmail"
                     Grid.Row="0"
                     Grid.Column="1"
-                    MinHeight="38"
-                    VerticalAlignment="Center"
+                    Height="40"
+                    VerticalContentAlignment="Center"
                     materialDesign:HintAssist.Hint="请输入邮箱"
                     Style="{StaticResource MyOutlinedTextBox}" />
 
                 <TextBlock
                     Grid.Row="2"
                     Grid.Column="0"
+                    Margin="0,0,12,0"
                     VerticalAlignment="Center"
                     FontWeight="SemiBold"
-                    Style="{StaticResource ToolbarTextBlock}"
                     Text="密码" />
                 <PasswordBox
                     x:Name="txtPassword"
                     Grid.Row="2"
                     Grid.Column="1"
-                    MinHeight="38"
-                    VerticalAlignment="Center"
+                    Height="40"
+                    VerticalContentAlignment="Center"
                     materialDesign:HintAssist.Hint="请输入密码"
                     Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
             </Grid>
-        </DockPanel>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    x:Name="btnLogin"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    MinHeight="38"
+                    Content="登录并导入"
+                    IsDefault="True"
+                    Style="{StaticResource DefButton}" />
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    MinHeight="38"
+                    Content="{x:Static resx:ResUI.TbCancel}"
+                    IsCancel="true"
+                    Style="{StaticResource DefButton}" />
+                <Button
+                    x:Name="btnForgetPassword"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Margin="0,8,0,0"
+                    HorizontalAlignment="Center"
+                    Content="忘记密码？"
+                    Style="{StaticResource MaterialDesignFlatButton}" />
+            </Grid>
+        </Grid>
     </Border>
 </base:WindowBase>
