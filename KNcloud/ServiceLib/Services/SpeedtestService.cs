@@ -57,13 +57,6 @@ public class SpeedtestService(Config config, Func<SpeedTestResult, Task> updateF
                 await RunUdpTestBatchAsync(lstSelected, exitLoopKey);
                 break;
 
-            case ESpeedActionType.Speedtest:
-                await RunMixedTestAsync(lstSelected, 1, true, exitLoopKey);
-                break;
-
-            case ESpeedActionType.Mixedtest:
-                await RunMixedTestAsync(lstSelected, _config.SpeedTestItem.MixedConcurrencyCount, true, exitLoopKey);
-                break;
         }
     }
 
@@ -114,22 +107,7 @@ public class SpeedtestService(Config config, Func<SpeedTestResult, Task> updateF
                     ProfileExManager.Instance.SetTestDelay(it.IndexId, 0);
                     break;
 
-                case ESpeedActionType.Speedtest:
-                    await UpdateFunc(it.IndexId, "", ResUI.SpeedtestingWait);
-                    ProfileExManager.Instance.SetTestSpeed(it.IndexId, 0);
-                    break;
-
-                case ESpeedActionType.Mixedtest:
-                    await UpdateFunc(it.IndexId, ResUI.Speedtesting, ResUI.SpeedtestingWait);
-                    ProfileExManager.Instance.SetTestDelay(it.IndexId, 0);
-                    ProfileExManager.Instance.SetTestSpeed(it.IndexId, 0);
-                    break;
             }
-        }
-
-        if (lstSelected.Count > 1 && (actionType == ESpeedActionType.Speedtest || actionType == ESpeedActionType.Mixedtest))
-        {
-            NoticeManager.Instance.Enqueue(ResUI.SpeedtestingPressEscToExit);
         }
 
         return lstSelected;

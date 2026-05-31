@@ -6,6 +6,7 @@
 		<GenerateSatelliteAssembliesForCore>true</GenerateSatelliteAssembliesForCore>
 		<UseWPF>true</UseWPF>
 		<ApplicationIcon>Resources\KNcloud.ico</ApplicationIcon>
+		<Win32Icon>Resources\KNcloud.ico</Win32Icon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
 		<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
@@ -31,6 +32,7 @@
 		<Resource Include="Resources\NotifyIcon3.ico" />
 		<Resource Include="Resources\NotifyIcon4.ico" />
 		<Resource Include="Resources\KNcloud.ico" />
+		<Resource Include="Resources\KNcloud_White.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
