@@ -26,6 +26,7 @@ public partial class MainWindow : WindowBase<MainWindowViewModel>
         menuCheckUpdate.Click += MenuCheckUpdate_Click;
         btnNewUpdate.Click += MenuCheckUpdate_Click;
         menuBackupAndRestore.Click += MenuBackupAndRestore_Click;
+        menuKncloudLogin.Click += MenuKncloudLogin_Click;
         menuClose.Click += MenuClose_Click;
 
         ViewModel = new MainWindowViewModel(UpdateViewHandler);
@@ -378,6 +379,16 @@ public partial class MainWindow : WindowBase<MainWindowViewModel>
     {
         _backupAndRestoreView ??= new BackupAndRestoreView(this);
         DialogHost.Show(_backupAndRestoreView);
+    }
+
+    private async void MenuKncloudLogin_Click(object? sender, RoutedEventArgs e)
+    {
+        var loginWindow = new KncloudLoginWindow();
+        var result = await loginWindow.ShowDialog<bool?>(this);
+        if (result == true && loginWindow.LoginResult != null && ViewModel != null)
+        {
+            await ViewModel.ImportKncloudSubscriptionAsync(loginWindow.LoginResult);
+        }
     }
 
     private async void MenuClose_Click(object? sender, RoutedEventArgs e)

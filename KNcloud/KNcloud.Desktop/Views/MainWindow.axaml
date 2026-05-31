@@ -98,6 +98,7 @@
 
                     <MenuItem x:Name="menuReload" Header="{x:Static resx:ResUI.menuReload}" />
 
+                    <MenuItem x:Name="menuKncloudLogin" Header="登录" />
 
                     <MenuItem x:Name="menuClose" Header="{x:Static resx:ResUI.menuExit}" />
                 </Menu>

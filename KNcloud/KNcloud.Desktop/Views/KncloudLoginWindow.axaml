@@ -1,0 +1,71 @@
+<Window
+    x:Class="KNcloud.Desktop.Views.KncloudLoginWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resx="clr-namespace:ServiceLib.Resx;assembly=ServiceLib"
+    xmlns:vms="clr-namespace:ServiceLib.ViewModels;assembly=ServiceLib"
+    Title="KNcloud 登录"
+    Width="420"
+    Height="260"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <DockPanel Margin="{StaticResource Margin16}">
+        <StackPanel
+            Margin="{StaticResource Margin4}"
+            HorizontalAlignment="Center"
+            DockPanel.Dock="Bottom"
+            Orientation="Horizontal">
+            <Button
+                x:Name="btnLogin"
+                Width="100"
+                Content="登录"
+                IsDefault="True" />
+            <Button
+                x:Name="btnCancel"
+                Width="100"
+                Margin="{StaticResource MarginLr8}"
+                Content="{x:Static resx:ResUI.TbCancel}"
+                IsCancel="True" />
+        </StackPanel>
+
+        <Grid ColumnDefinitions="80,*" RowDefinitions="Auto,Auto,Auto">
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="{StaticResource Margin4}"
+                Text="KNcloud" />
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="{StaticResource Margin4}"
+                VerticalAlignment="Center"
+                Text="邮箱" />
+            <TextBox
+                x:Name="txtEmail"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="{StaticResource Margin4}"
+                VerticalAlignment="Center"
+                Watermark="请输入邮箱" />
+
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="{StaticResource Margin4}"
+                VerticalAlignment="Center"
+                Text="密码" />
+            <TextBox
+                x:Name="txtPassword"
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="{StaticResource Margin4}"
+                VerticalAlignment="Center"
+                PasswordChar="●"
+                Watermark="请输入密码" />
+        </Grid>
+    </DockPanel>
+</Window>
