@@ -84,15 +84,6 @@
                         <PathIcon Data="{StaticResource SemiIconBolt}" />
                     </Button.Content>
                 </Button>
-                <Button
-                    x:Name="menuMixedTestServer"
-                    Margin="{StaticResource MarginLr4}"
-                    Classes="IconButton Success"
-                    ToolTip.Tip="{x:Static resx:ResUI.menuMixedTestServer}">
-                    <Button.Content>
-                        <PathIcon Data="{StaticResource building_ping}" />
-                    </Button.Content>
-                </Button>
 
             </WrapPanel>
             <DataGrid
@@ -136,10 +127,6 @@
                             x:Name="menuRealPingServer"
                             Header="{x:Static resx:ResUI.menuRealPingServer}"
                             InputGesture="Ctrl+R" />
-                        <MenuItem
-                            x:Name="menuSpeedServer"
-                            Header="{x:Static resx:ResUI.menuSpeedServer}"
-                            InputGesture="Ctrl+T" />
                         <MenuItem x:Name="menuUdpTestServer" Header="{x:Static resx:ResUI.menuUdpTestServer}" />
                         <MenuItem x:Name="menuSortServerResult" Header="{x:Static resx:ResUI.menuSortServerResult}" />
                         <Separator />
@@ -271,12 +258,6 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn
-                        Width="100"
-                        Binding="{Binding SpeedVal}"
-                        Header="{x:Static resx:ResUI.LvTestSpeed}"
-                        Tag="SpeedVal" />
-
                     <DataGridTextColumn
                         Width="100"
                         Binding="{Binding IpInfo}"

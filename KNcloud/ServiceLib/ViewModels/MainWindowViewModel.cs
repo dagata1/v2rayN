@@ -477,6 +477,44 @@ public class MainWindowViewModel : MyReactiveObject
         await Task.Run(async () => await SubscriptionHandler.UpdateProcess(_config, subId, blProxy, UpdateTaskHandler));
     }
 
+    public async Task ImportKncloudSubscriptionAsync(KncloudLoginResult loginResult)
+    {
+        if (loginResult.SubscriptionUrl.IsNullOrEmpty())
+        {
+            NoticeManager.Instance.Enqueue(ResUI.OperationFailed);
+            return;
+        }
+
+        var subItem = (await AppManager.Instance.SubItems())?.FirstOrDefault(t => t.Url == loginResult.SubscriptionUrl);
+        if (subItem is null)
+        {
+            var item = new SubItem
+            {
+                Remarks = "KNcloud",
+                Url = loginResult.SubscriptionUrl,
+                Enabled = true
+            };
+            if (await ConfigHandler.AddSubItem(_config, item) != 0)
+            {
+                NoticeManager.Instance.Enqueue(ResUI.OperationFailed);
+                return;
+            }
+
+            subItem = (await AppManager.Instance.SubItems())?.FirstOrDefault(t => t.Url == loginResult.SubscriptionUrl);
+        }
+
+        if (subItem is null)
+        {
+            NoticeManager.Instance.Enqueue(ResUI.OperationFailed);
+            return;
+        }
+
+        _config.SubIndexId = subItem.Id;
+        await ConfigHandler.SaveConfig(_config);
+        RefreshSubscriptions();
+        await UpdateSubscriptionProcess(subItem.Id, false);
+    }
+
     #endregion Subscription
 
     #region Setting

@@ -26,6 +26,7 @@ public partial class MainWindow
         menuCheckUpdate.Click += MenuCheckUpdate_Click;
         btnNewUpdate.Click += MenuCheckUpdate_Click;
         menuBackupAndRestore.Click += MenuBackupAndRestore_Click;
+        btnKncloudLogin.Click += BtnKncloudLogin_Click;
 
         ViewModel = new MainWindowViewModel(UpdateViewHandler);
 
@@ -362,6 +363,15 @@ public partial class MainWindow
         DialogHost.Show(_checkUpdateView, "RootDialog");
 
         AppEvents.HasUpdateNotified.Publish(false);
+    }
+
+    private async void BtnKncloudLogin_Click(object sender, RoutedEventArgs e)
+    {
+        var loginWindow = new KncloudLoginWindow();
+        if (loginWindow.ShowDialog() == true && loginWindow.LoginResult != null && ViewModel != null)
+        {
+            await ViewModel.ImportKncloudSubscriptionAsync(loginWindow.LoginResult);
+        }
     }
 
     private void MenuBackupAndRestore_Click(object sender, RoutedEventArgs e)

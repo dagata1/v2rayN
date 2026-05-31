@@ -56,12 +56,9 @@ public class ProfilesViewModel : MyReactiveObject
     public ReactiveCommand<SubItem, Unit> MoveToGroupCmd { get; }
 
     //servers ping
-    public ReactiveCommand<Unit, Unit> MixedTestServerCmd { get; }
-
     public ReactiveCommand<Unit, Unit> TcpingServerCmd { get; }
     public ReactiveCommand<Unit, Unit> RealPingServerCmd { get; }
     public ReactiveCommand<Unit, Unit> UdpTestServerCmd { get; }
-    public ReactiveCommand<Unit, Unit> SpeedServerCmd { get; }
     public ReactiveCommand<Unit, Unit> SortServerResultCmd { get; }
     public ReactiveCommand<Unit, Unit> RemoveInvalidServerResultCmd { get; }
     public ReactiveCommand<Unit, Unit> FastRealPingCmd { get; }
@@ -168,10 +165,6 @@ public class ProfilesViewModel : MyReactiveObject
         {
             await ServerSpeedtest(ESpeedActionType.FastRealping);
         });
-        MixedTestServerCmd = ReactiveCommand.CreateFromTask(async () =>
-        {
-            await ServerSpeedtest(ESpeedActionType.Mixedtest);
-        });
         TcpingServerCmd = ReactiveCommand.CreateFromTask(async () =>
         {
             await ServerSpeedtest(ESpeedActionType.Tcping);
@@ -183,10 +176,6 @@ public class ProfilesViewModel : MyReactiveObject
         UdpTestServerCmd = ReactiveCommand.CreateFromTask(async () =>
         {
             await ServerSpeedtest(ESpeedActionType.UdpTest);
-        }, canEditRemove);
-        SpeedServerCmd = ReactiveCommand.CreateFromTask(async () =>
-        {
-            await ServerSpeedtest(ESpeedActionType.Speedtest);
         }, canEditRemove);
         SortServerResultCmd = ReactiveCommand.CreateFromTask(async () =>
         {
@@ -725,13 +714,9 @@ public class ProfilesViewModel : MyReactiveObject
     public async Task ServerSpeedtest(ESpeedActionType actionType)
     {
         List<ProfileItem>? lstSelected;
-        if (actionType is ESpeedActionType.Mixedtest or ESpeedActionType.FastRealping)
+        if (actionType == ESpeedActionType.FastRealping)
         {
-            if (actionType == ESpeedActionType.FastRealping)
-            {
-                actionType = ESpeedActionType.Realping;
-            }
-
+            actionType = ESpeedActionType.Realping;
             lstSelected = JsonUtils.Deserialize<List<ProfileItem>>(JsonUtils.Serialize(ProfileItems?.OrderBy(t => t.Sort)));
         }
         else

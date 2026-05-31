@@ -87,15 +87,7 @@
                     ToolTip="{x:Static resx:ResUI.menuFastRealPing}">
                     <materialDesign:PackIcon VerticalAlignment="Center" Kind="LightningBolt" />
                 </Button>
-                <Button
-                    x:Name="menuMixedTestServer"
-                    Width="30"
-                    Height="30"
-                    Margin="{StaticResource MarginLeftRight4}"
-                    Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                    ToolTip="{x:Static resx:ResUI.menuMixedTestServer}">
-                    <materialDesign:PackIcon VerticalAlignment="Center" Kind="Speedometer" />
-                </Button>
+
             </WrapPanel>
             <DataGrid
                 x:Name="lstProfiles"
@@ -162,11 +154,6 @@
                             x:Name="menuUdpTestServer"
                             Height="{StaticResource MenuItemHeight}"
                             Header="{x:Static resx:ResUI.menuUdpTestServer}" />
-                        <MenuItem
-                            x:Name="menuSpeedServer"
-                            Height="{StaticResource MenuItemHeight}"
-                            Header="{x:Static resx:ResUI.menuSpeedServer}"
-                            InputGestureText="Ctrl+T" />
                         <MenuItem
                             x:Name="menuSortServerResult"
                             Height="{StaticResource MenuItemHeight}"
@@ -327,18 +314,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </base:MyDGTextColumn>
-                    <base:MyDGTextColumn
-                        Width="100"
-                        Binding="{Binding SpeedVal}"
-                        ExName="SpeedVal"
-                        Header="{x:Static resx:ResUI.LvTestSpeed}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="HorizontalAlignment" Value="Right" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </base:MyDGTextColumn>
-
                     <base:MyDGTextColumn
                         x:Name="colTodayUp"
                         Width="100"
