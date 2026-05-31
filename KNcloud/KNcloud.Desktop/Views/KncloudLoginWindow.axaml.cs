@@ -12,6 +12,7 @@ public partial class KncloudLoginWindow : WindowBase<KncloudLoginViewModel>
 
         Loaded += Window_Loaded;
         btnCancel.Click += (s, e) => Close();
+        btnForgetPassword.Click += BtnForgetPassword_Click;
 
         ViewModel = new KncloudLoginViewModel(UpdateViewHandler);
 
@@ -37,5 +38,10 @@ public partial class KncloudLoginWindow : WindowBase<KncloudLoginViewModel>
     private void Window_Loaded(object? sender, RoutedEventArgs e)
     {
         txtEmail.Focus();
+    }
+
+    private void BtnForgetPassword_Click(object? sender, RoutedEventArgs e)
+    {
+        ProcUtils.ProcessStart(ServiceLib.Services.KncloudAuthService.ForgetPasswordUrl);
     }
 }

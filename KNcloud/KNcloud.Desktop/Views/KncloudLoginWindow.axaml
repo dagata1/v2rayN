@@ -31,7 +31,7 @@
                 IsCancel="True" />
         </StackPanel>
 
-        <Grid ColumnDefinitions="80,*" RowDefinitions="Auto,Auto,Auto">
+        <Grid ColumnDefinitions="80,*" RowDefinitions="Auto,Auto,Auto,Auto">
             <TextBlock
                 Grid.Row="0"
                 Grid.Column="0"
@@ -66,6 +66,14 @@
                 VerticalAlignment="Center"
                 PasswordChar="●"
                 Watermark="请输入密码" />
+
+            <Button
+                x:Name="btnForgetPassword"
+                Grid.Row="3"
+                Grid.Column="1"
+                Margin="{StaticResource Margin4}"
+                HorizontalAlignment="Right"
+                Content="忘记密码" />
         </Grid>
     </DockPanel>
 </Window>

@@ -11,6 +11,7 @@ public partial class KncloudLoginWindow
         Owner = Application.Current.MainWindow;
         Loaded += Window_Loaded;
         txtPassword.PasswordChanged += TxtPassword_PasswordChanged;
+        btnForgetPassword.Click += BtnForgetPassword_Click;
 
         ViewModel = new KncloudLoginViewModel(UpdateViewHandler);
 
@@ -44,5 +45,10 @@ public partial class KncloudLoginWindow
         {
             ViewModel.Password = txtPassword.Password;
         }
+    }
+
+    private void BtnForgetPassword_Click(object sender, RoutedEventArgs e)
+    {
+        ProcUtils.ProcessStart(ServiceLib.Services.KncloudAuthService.ForgetPasswordUrl);
     }
 }

@@ -6,6 +6,7 @@ namespace ServiceLib.Services;
 public class KncloudAuthService
 {
     private const string LoginUrl = "https://www.kncloud.top/api/v1/passport/auth/login";
+    public const string ForgetPasswordUrl = "https://www.kncloud.top/api/v1/passport/auth/forget";
     private const string SubscribeUrlFormat = "https://www.kncloud.top/api/v1/client/subscribe?token={0}";
 
     public async Task<RetResult> LoginAsync(string email, string password)

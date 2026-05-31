@@ -42,6 +42,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80" />
@@ -86,6 +87,15 @@
                 VerticalAlignment="Center"
                 materialDesign:HintAssist.Hint="请输入密码"
                 Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
+
+            <Button
+                x:Name="btnForgetPassword"
+                Grid.Row="3"
+                Grid.Column="1"
+                Margin="{StaticResource Margin4}"
+                HorizontalAlignment="Right"
+                Content="忘记密码"
+                Style="{StaticResource MaterialDesignFlatButton}" />
         </Grid>
     </DockPanel>
 </base:WindowBase>
